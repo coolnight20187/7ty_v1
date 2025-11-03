@@ -1,4 +1,4 @@
-// FILE: lib/supabase/server.ts
+// FILE: app/lib/supabase/server.ts
 // MỤC TIÊU: Tạo 1 Supabase client an toàn để dùng trong Backend (API Routes / Serverless Functions)
 // Nó sẽ đọc cookie từ request.
 
@@ -12,7 +12,7 @@ export function createServer() {
   const supabaseAnonKey = process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY!
 
   if (!supabaseUrl || !supabaseAnonKey) {
-    throw new Error('Supabase URL hoặc Anon Key chưa được cài đặt.');
+    throw new Error('Supabase URL hoặc Anon Key chưa được cài đặt.')
   }
 
   return createServerClient(supabaseUrl, supabaseAnonKey, {
@@ -25,3 +25,5 @@ export function createServer() {
   })
 }
 
+// Alias export để tương thích với các file đang import createServerClient
+export const createServerClient = createServer
