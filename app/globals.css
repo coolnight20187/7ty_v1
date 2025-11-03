@@ -1,0 +1,118 @@
+/* FILE: app/globals.css */
+
+/* 1. Import Tailwind CSS */
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* 2. Biến màu (CSS Variables) cho giao diện "SaaS" */
+:root {
+  --font-inter: 'Inter', sans-serif;
+  --color-bg-body: #f8f9fa;
+  --color-bg-card: #ffffff;
+  --color-text-primary: #111827;
+  --color-text-secondary: #6b7280;
+  --color-border: #e5e7eb;
+  --card-shadow: 0 4px 12px rgba(0,0,0,0.05);
+  --card-shadow-hover: 0 6px 16px rgba(0,0,0,0.08);
+  --card-radius: 12px;
+}
+
+[data-bs-theme="dark"] {
+  --color-bg-body: #1a1a1a;
+  --color-bg-card: #222222;
+  --color-text-primary: #ededed;
+  --color-text-secondary: #9ca3af;
+  --color-border: #3a3a3a;
+  --card-shadow: 0 4px 12px rgba(0,0,0,0.15);
+  --card-shadow-hover: 0 6px 16px rgba(0,0,0,0.2);
+}
+
+/* 3. Style cơ bản */
+body {
+  font-family: var(--font-inter);
+  background-color: var(--color-bg-body) !important;
+  color: var(--color-text-primary);
+  padding-top: 70px; /* Khoảng cách cho navbar */
+}
+
+.main-container {
+  padding-top: 1.5rem;
+}
+
+/* 4. Tùy chỉnh Bootstrap Components (Ghi đè) */
+
+/* Navbar (Header) */
+.navbar {
+  min-height: 55px;
+  background-color: var(--color-bg-card) !important;
+  box-shadow: var(--card-shadow);
+  border-bottom: 1px solid var(--color-border) !important;
+}
+.navbar .navbar-brand { font-size: 1.1rem; font-weight: 600; }
+.navbar .btn-sm i { font-size: 1.1rem; }
+.navbar .navbar-text { font-size: 0.9rem; color: var(--color-text-secondary); }
+
+/* Card (Thẻ) */
+.card {
+  border: none !important;
+  border-radius: var(--card-radius) !important;
+  box-shadow: var(--card-shadow) !important;
+  background-color: var(--color-bg-card) !important;
+  transition: all 0.2s ease-in-out;
+}
+.card:hover {
+  transform: translateY(-2px);
+  box-shadow: var(--card-shadow-hover) !important;
+}
+.card .card-header {
+  padding: 0.75rem 1.25rem;
+  font-size: 0.9rem;
+  font-weight: 600;
+  border-bottom: 1px solid var(--color-border) !important;
+  background-color: transparent !important;
+}
+.card .card-body { padding: 1.25rem; }
+
+/* Modal */
+.modal-content {
+  border: none !important;
+  border-radius: var(--card-radius) !important;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.1) !important;
+  background-color: var(--color-bg-card);
+}
+.modal-header, .modal-footer { border: none !important; }
+
+/* Bảng (Table) */
+.table-wrap { overflow-x: auto; border: none; border-radius: var(--card-radius); }
+#resultTable { min-width: 1200px; margin-bottom: 0; font-size: 0.875rem; }
+#resultTable th, #resultTable td { padding: 0.6rem 0.75rem; vertical-align: middle; border-bottom: 1px solid var(--color-border); }
+#resultTable thead th {
+  position: sticky; top: 0; z-index: 10;
+  background-color: var(--color-bg-card);
+  font-weight: 600;
+  font-size: 0.8rem;
+  text-transform: uppercase;
+  color: var(--color-text-secondary);
+  border-bottom: 2px solid var(--color-border);
+}
+.table-hover > tbody > tr:hover > * {
+  background-color: var(--bs-primary-bg-subtle) !important;
+  transition: background-color 0.1s ease;
+}
+#resultTable tfoot tr { border-top: 2px solid var(--color-border); }
+.sort-icon::after { content: ' ⇅'; font-size: 0.8em; opacity: 0.4; }
+th.sorted-asc .sort-icon::after { content: ' ↑'; opacity: 1; }
+th.sorted-desc .sort-icon::after { content: ' ↓'; opacity: 1; }
+th[data-sort] { cursor: pointer; }
+
+/* 5. Tiện ích (Alert, Loading, Quyền...) */
+.hidden { display: none !important; }
+.btn.is-loading .btn-text { display: none; }
+.btn.is-loading .spinner-border { display: inline-block !important; }
+.admin-only, .user-only { display: none !important; }
+body.is-admin .admin-only { display: flex !important; }
+body.is-user .user-only { display: flex !important; }
+body.is-admin .admin-only.w-100 { width: 100% !important; }
+.mt-auto { margin-top: auto !important; }
+

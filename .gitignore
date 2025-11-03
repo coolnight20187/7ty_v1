@@ -1,0 +1,21 @@
+FILE: .gitignore
+
+MỤC TIÊU: Ngăn Git upload các thư mục không cần thiết.
+
+Bỏ qua thư mục thư viện (Rất quan trọng)
+
+node_modules/
+
+Bỏ qua thư mục build của Next.js
+
+.next/
+
+Bỏ qua các file bí mật (Biến Môi trường)
+
+.env.local
+.env
+
+Bỏ qua các file hệ điều hành
+
+.DS_Store
+*.log
