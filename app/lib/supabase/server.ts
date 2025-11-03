@@ -2,7 +2,7 @@
 // MỤC TIÊU: Tạo 1 Supabase client an toàn để dùng trong Backend (API Routes / Serverless Functions)
 // Nó sẽ đọc cookie từ request.
 
-import { createServerClient } from '@supabase/ssr'
+import { createServerClient as createServerClientLib } from '@supabase/ssr'
 import { cookies } from 'next/headers'
 
 export function createServer() {
@@ -15,7 +15,7 @@ export function createServer() {
     throw new Error('Supabase URL hoặc Anon Key chưa được cài đặt.')
   }
 
-  return createServerClient(supabaseUrl, supabaseAnonKey, {
+  return createServerClientLib(supabaseUrl, supabaseAnonKey, {
     cookies: {
       get(name: string) {
         return cookieStore.get(name)?.value
